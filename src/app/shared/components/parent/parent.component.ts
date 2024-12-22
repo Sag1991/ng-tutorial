@@ -17,12 +17,6 @@ export class ParentComponent implements OnInit {
     sharedService = inject(SharedService)
 
     ngOnInit(): void {
-        this.sharedService.sharedData$.subscribe(data => {
-            if (data) {
-                this.fetchedDataFromChild = data;
-                console.log("fetchedDataFromChild", data);
-            }
-        })
     }
 
     redirectToChild() {

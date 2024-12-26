@@ -13,7 +13,11 @@ export class HomeService {
         private http: HttpClient
     ) { }
 
-    getMethod(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.baseUrl}/getAllQuery`)
+    getRecords(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.baseUrl}/BudgetPlanner/getAllQuery`)
+    }
+
+    getUserData(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.baseUrl}/BusBooking/GetAllUsers`);
     }
 }

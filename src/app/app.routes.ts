@@ -4,7 +4,7 @@ import { ChildComponent } from './shared/components/child/child.component';
 import { CrudComponent } from './shared/components/crud/crud.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'child', pathMatch: 'full' },
+    { path: '', redirectTo: 'crud', pathMatch: 'full' },
     { path: 'parent', component: ParentComponent },
     { path: 'child', component: ChildComponent },
     { path: 'crud', component: CrudComponent }

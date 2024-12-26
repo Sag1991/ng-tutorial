@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, } from '@angular/core';
-import { HomeService } from '../../../core/services/home.service';
 import { SharedService } from '../../../core/services/shared.service';
 import { Router } from '@angular/router';
 
@@ -13,29 +12,26 @@ import { Router } from '@angular/router';
     styleUrl: './child.component.scss'
 })
 export class ChildComponent implements OnInit {
-    public fetchedData: any = {};
-    homeService = inject(HomeService)
+    receivedDataFromParent: any = {};
     sharedService = inject(SharedService)
     router = inject(Router)
 
     ngOnInit(): void {
-        this.fetchRecords()
-    }
-
-    fetchRecords(): void {
-        this.homeService.getMethod().subscribe({
-            next: (response) => {
-                this.fetchedData = response;
-                console.log("Fetched Data from the API:-", this.fetchedData.data);
-                this.sharedService.updateData(this.fetchedData.data)
-            },
-            error: (err) => {
-                console.log("Encountering the error during fetchimg the data from the APIs", err);
+        this.sharedService.sharedData$.subscribe({
+            next: (res: any) => {
+                if (res && res.length && Array.isArray(res)) {
+                    this.receivedDataFromParent = res;
+                    console.log("this.receivedDataFromParent", this.receivedDataFromParent);
+                } else {
+                    console.log("Error")
+                }
+            }, error: (err) => {
+                console.log("Error during fetching the data from the parent", err);
             }
         })
     }
 
-    redirectToBack() {
-        this.router.navigate(['/crud']);
+    redirectBack() {
+        this.router.navigate(['/parent']);
     }
 }

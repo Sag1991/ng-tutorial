@@ -1,4 +1,34 @@
-<h2>
-    Fetched Data from the child component:-
-</h2>
-{{dataFromChild|json}}
+@for (item of getUserData; track $index) {
+<h3 class="text-center">User Details</h3>
+<form action="" class="container row mt-3 mb-3 border-2">
+    <label for="userIdInput" class="col-3">UserId</label><br>
+    <input type="number" id="userIdInput" name="userid" [(ngModel)]="item.userId" [ngModelOptions]="{standalone:true}"
+        class="col-3">
+    <br>
+    <label for="userName" class="col-3">User Name</label><br>
+    <input type="text" id="userName" name="username" [(ngModel)]="item.userName" [ngModelOptions]="{standalone:true}"
+        class="col-3">
+    <br>
+    <label for="userpassword" class="col-3">Password</label><br>
+    <input type="text" id="userpassword" name="password" [(ngModel)]="item.password"
+        [ngModelOptions]="{standalone:true}" class="col-3">
+    <br>
+    <label for="userFullName" class="col-3">Full Name</label><br>
+    <input type="text" id="userFullName" name="userfullname" [(ngModel)]="item.fullName"
+        [ngModelOptions]="{standalone:true}" class="col-3">
+    <br>
+    <label for="userProjectName" class="col-3">Project Name</label><br>
+    <input type="text" id="userProjectName" name="userprojectname" [(ngModel)]="item.projectName"
+        [ngModelOptions]="{standalone:true}" class="col-3">
+    <br>
+    <label for="userCreatedDate" class="col-3">Created Date</label><br>
+    <input type="text" id="userCreatedDate" name="usercreateddate" [(ngModel)]="item.createdDate"
+        [ngModelOptions]="{standalone:true}" class="col-3">
+    <br>
+    <label for="userRole" class="col-3">Role</label><br>
+    <input type="text" id="userRole" name="userrole" [(ngModel)]="item.role" [ngModelOptions]="{standalone:true}"
+        class="col-3">
+    <br>
+</form>
+<hr>
+}

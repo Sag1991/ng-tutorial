@@ -3,5 +3,24 @@
     <button type="button" class="btn btn-primary" (click)="redirectToChild()">
         Redirect to Child
     </button>
-    <div>{{fetchedDataFromChild|json}}</div>
+    @for (item of fetchedData; track $index) {
+    <form class="container pt-2 pb-2 row mt-0 mb-0">
+        <div class="col-md-4 col-4">
+            <label for="queryIdInput">queryId</label><br>
+            <input type="text" id="queryIdInput" name="queryId" [(ngModel)]="item.queryId"
+                [ngModelOptions]="{standalone: true}">
+            <br>
+        </div>
+        <div class="col-md-4 col-4">
+            <label for="nameInput">Name</label><br>
+            <input type="text" id="nameInput" name="name" [(ngModel)]="item.name" [ngModelOptions]="{standalone: true}">
+            <br>
+        </div>
+        <div class="col-md-4 col-4">
+            <label for="stringInput">City</label><br>
+            <input type="text" id="stringInput" name="string" [(ngModel)]="item.cityy"
+                [ngModelOptions]="{standalone: true}">
+        </div>
+    </form>
+    }
 </div>

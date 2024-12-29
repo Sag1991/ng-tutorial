@@ -15,6 +15,18 @@ import { FormsModule } from '@angular/forms';
 export class CrudComponent implements OnInit {
     getUserData: any = {};
     homeService = inject(HomeService);
+    userDetails: any = {
+        userId: 0,
+        userName: "",
+        emailId: "",
+        fullName: "",
+        role: "",
+        createdDate: "2024-12-29T17:57:57.964Z",
+        password: "",
+        projectName: "",
+        refreshToken: "",
+        refreshTokenExpiryTime: "2024-12-29T17:57:57.964Z"
+    }
 
     ngOnInit(): void {
         this.getUsersRecords();
@@ -24,7 +36,7 @@ export class CrudComponent implements OnInit {
         this.homeService.getUserData().subscribe({
             next: (data: any) => {
                 console.log("Users Records:-", data);
-                if (data && data.data && Array.isArray(data.data)) {
+                if (data && data.data && Array.isArray(data.data) && data.data.length > 0) {
                     this.getUserData = data.data.map((item: any) => {
                         return {
                             userId: item.userId,
@@ -43,6 +55,16 @@ export class CrudComponent implements OnInit {
             },
             error: (err) => {
                 console.log("Error while fetching the User records!", err);
+            }
+        })
+    }
+
+    addUserRecords(): void {
+        this.homeService.postUserData(this.userDetails).subscribe({
+            next: () => {
+                console.log("Details Added Succesfully!");
+            }, error: (err) => {
+                console.log("Error while adding the user details.")
             }
         })
     }

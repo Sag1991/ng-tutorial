@@ -20,4 +20,8 @@ export class HomeService {
     getUserData(): Observable<any[]> {
         return this.http.get<any[]>(`${this.baseUrl}/BusBooking/GetAllUsers`);
     }
+
+    postUserData(userData: any): Observable<any> {
+        return this.http.post<any>(`${this.baseUrl}/BusBooking/AddNewUser`, userData);
+    }
 }

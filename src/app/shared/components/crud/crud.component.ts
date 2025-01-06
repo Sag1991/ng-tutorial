@@ -2,14 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { HomeService } from '../../../core/services/home.service';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-crud',
     imports: [
         CommonModule,
-        FormsModule,
-        ButtonModule
+        FormsModule
     ],
     templateUrl: './crud.component.html',
     styleUrl: './crud.component.scss'

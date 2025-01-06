@@ -2,30 +2,34 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { HomeService } from '../../../core/services/home.service';
 import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-crud',
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        ButtonModule
     ],
     templateUrl: './crud.component.html',
     styleUrl: './crud.component.scss'
 })
 export class CrudComponent implements OnInit {
     getUserData: any = {};
+
     homeService = inject(HomeService);
+
     userDetails: any = {
         userId: 0,
         userName: "",
         emailId: "",
         fullName: "",
         role: "",
-        createdDate: "2024-12-29T17:57:57.964Z",
+        createdDate: "2025-01-06T16:20:32.302Z",
         password: "",
         projectName: "",
         refreshToken: "",
-        refreshTokenExpiryTime: "2024-12-29T17:57:57.964Z"
+        refreshTokenExpiryTime: "2025-01-06T16:20:32.302Z"
     }
 
     ngOnInit(): void {
@@ -61,10 +65,17 @@ export class CrudComponent implements OnInit {
 
     addUserRecords(): void {
         this.homeService.postUserData(this.userDetails).subscribe({
-            next: () => {
-                console.log("Details Added Succesfully!");
+            next: (res) => {
+                if (res.result) {
+                    console.log("Details Added Succesfully!", res.message);
+                    alert("Details Added Succesfully!");
+                    this.getUsersRecords();
+                } else {
+                    console.log("Failed to Add Data!", res.message);
+                    alert("Failed to Add Data!");
+                }
             }, error: (err) => {
-                console.log("Error while adding the user details.")
+                console.log("Error while adding the user details.", err);
             }
         })
     }

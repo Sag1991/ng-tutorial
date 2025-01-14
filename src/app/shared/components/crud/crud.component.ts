@@ -32,6 +32,7 @@ export class CrudComponent implements OnInit {
 
     ngOnInit(): void {
         this.getUsersRecords();
+        this.getUpdatedRecords();
     }
 
     getUsersRecords(): void {
@@ -57,6 +58,17 @@ export class CrudComponent implements OnInit {
             },
             error: (err) => {
                 console.log("Error while fetching the User records!", err);
+            }
+        })
+    }
+
+    getUpdatedRecords() {
+        this.homeService.getUpdateUserRecords().subscribe({
+            next: (res) => {
+                console.log("Updated User Data:-", res);
+            },
+            error: (err) => {
+                console.log("Error", err);
             }
         })
     }

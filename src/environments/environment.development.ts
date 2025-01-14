@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://projectapi.gerasim.in/api'
+    apiUrlPrimary: 'https://projectapi.gerasim.in/api',
+    apiUrlSecondary: 'https://freeapi.miniprojectideas.com/api'
 };

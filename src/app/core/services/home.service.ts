@@ -7,21 +7,30 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class HomeService {
-    private baseUrl = environment.apiUrl;
+    private baseUrlPrimary = environment.apiUrlPrimary;
+    private baseUrlSecondary = environment.apiUrlSecondary;
 
     constructor(
         private http: HttpClient
     ) { }
 
     getRecords(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.baseUrl}/BudgetPlanner/getAllQuery`)
+        return this.http.get<any[]>(`${this.baseUrlPrimary}/BudgetPlanner/getAllQuery`)
     }
 
     getUserData(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.baseUrl}/BusBooking/GetAllUsers`);
+        return this.http.get<any[]>(`${this.baseUrlPrimary}/BusBooking/GetAllUsers`);
+    }
+
+    getUpdateUserRecords(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.baseUrlSecondary}/User/GetAllUsers`);
     }
 
     postUserData(userData: any): Observable<any> {
-        return this.http.post<any>(`${this.baseUrl}/BusBooking/AddNewUser`, userData);
+        return this.http.post<any>(`${this.baseUrlPrimary}/BusBooking/AddNewUser`, userData);
+    }
+
+    postLogin(credential: any): Observable<any> {
+        return this.http.post<any>(`${this.baseUrlSecondary}/User/Login`, credential);
     }
 }

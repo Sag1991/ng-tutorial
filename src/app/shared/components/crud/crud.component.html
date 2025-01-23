@@ -1,69 +1,20 @@
-<div class="container">
-    <h3 class="text-center">Show User Details</h3>
-    <form action="" class=" row mt-3 mb-3 border-2">
-        <label for="userIdInput" class="col-3">UserId</label><br>
-        <input type="number" id="userIdInput" name="userid" [(ngModel)]="getUserData[0].userId"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userName" class="col-3">User Name</label><br>
-        <input type="text" id="userName" name="username" [(ngModel)]="getUserData[0].userName"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userpassword" class="col-3">Password</label><br>
-        <input type="text" id="userpassword" name="password" [(ngModel)]="getUserData[0].password"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userFullName" class="col-3">Full Name</label><br>
-        <input type="text" id="userFullName" name="userfullname" [(ngModel)]="getUserData[0].fullName"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userProjectName" class="col-3">Project Name</label><br>
-        <input type="text" id="userProjectName" name="userprojectname" [(ngModel)]="getUserData[0].projectName"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userCreatedDate" class="col-3">Created Date</label><br>
-        <input type="text" id="userCreatedDate" name="usercreateddate" [(ngModel)]="getUserData[0].createdDate"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userRole" class="col-3">Role</label><br>
-        <input type="text" id="userRole" name="userrole" [(ngModel)]="getUserData[0].role"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <button type="button" class="btn btn-success mt-3" (click)="addUserRecords()">Submit</button>
-    </form>
-</div>
-<hr>
-<div class="container">
-    <h3 class="text-center">Add User Details</h3>
-    <form action="" class=" row mt-3 mb-3 border-2">
-        <label for="userIdInput" class="col-3">UserId</label><br>
-        <input type="number" id="userIdInput" name="userid" [(ngModel)]="userDetails.userId"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userName" class="col-3">User Name</label><br>
-        <input type="text" id="userName" name="username" [(ngModel)]="userDetails.userName"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userpassword" class="col-3">Password</label><br>
-        <input type="text" id="userpassword" name="password" [(ngModel)]="userDetails.password"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userFullName" class="col-3">Full Name</label><br>
-        <input type="text" id="userFullName" name="userfullname" [(ngModel)]="userDetails.fullName"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userProjectName" class="col-3">Project Name</label><br>
-        <input type="text" id="userProjectName" name="userprojectname" [(ngModel)]="userDetails.projectName"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userCreatedDate" class="col-3">Created Date</label><br>
-        <input type="text" id="userCreatedDate" name="usercreateddate" [(ngModel)]="userDetails.createdDate"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <label for="userRole" class="col-3">Role</label><br>
-        <input type="text" id="userRole" name="userrole" [(ngModel)]="userDetails.role"
-            [ngModelOptions]="{standalone:true}" class="col-3">
-        <br>
-        <button type="button" class="btn btn-success mt-3" (click)="addUserRecords()">Submit</button>
-    </form>
-</div>
+<p-table [value]="getUserData" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+        <tr>
+            <th>UserID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-data>
+        <tr>
+            <td>{{ data?.userId }}</td>
+            <td>{{ data?.firstName }}</td>
+            <td>{{ data?.lastName }}</td>
+            <td>{{ data?.email }}</td>
+            <td>{{ data?.mobile }}</td>
+        </tr>
+    </ng-template>
+</p-table>

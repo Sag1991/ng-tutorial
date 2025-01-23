@@ -7,3 +7,17 @@ body {
 * {
     box-sizing: border-box !important;
 }
+
+.p-datatable-table-container {
+    overflow: inherit !important;
+}
+
+.p-datatable-thead>tr {
+    position: sticky !important;
+    top: 0 !important;
+}
+
+.p-datatable-thead>tr>th {
+    background-color: #f5f5f5 !important;
+    color: #18181b !important;
+}

@@ -1,0 +1,9 @@
+<div class="main-container h-100 w-100">
+    <div style="height: 70px;" class="d-flex justify-content-between align-items-center ps-3 pe-3">
+        <div>List Of User Data</div>
+        <p-button label="Login Out" (onClick)="logout()" />
+    </div>
+    <div style="height: calc(100% - 70px); overflow: auto;">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -39,6 +39,7 @@ export class LoginComponent {
                 alert(res.message)
                 console.log(res.message);
                 localStorage.setItem("token", res.data.token);
+                localStorage.setItem("loginUserEmailId", this.loginObj.emailId);
                 this.router.navigate(['/crud']);
             },
             error: (err) => {

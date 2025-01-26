@@ -5,6 +5,7 @@ import { CrudComponent } from './shared/components/crud/crud.component';
 import { FormsComponent } from './shared/components/forms/forms.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { LayoutComponent } from './shared/pages/layout/layout.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -14,17 +15,22 @@ export const routes: Routes = [
     },
     {
         path: 'parent',
-        component: ParentComponent
+        component: ParentComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'child',
-        component: ChildComponent
+        component: ChildComponent,
+        canActivate: [authGuard]
     },
     {
-        path: 'forms', component: FormsComponent
+        path: 'forms',
+        component: FormsComponent,
+        canActivate: [authGuard]
     },
     {
-        path: 'login', component: LoginComponent
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: '',
@@ -32,7 +38,8 @@ export const routes: Routes = [
         children: [
             {
                 path: "crud",
-                component: CrudComponent
+                component: CrudComponent,
+                canActivate: [authGuard]
             }
         ]
     },
